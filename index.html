@@ -1,0 +1,106 @@
+<details open>
+  <summary>player 1</summary>
+  <ol id="p1Hand"></ol>
+</details>
+<details>
+  <summary>player 2</summary>
+  <ol id="p2Hand"></ol>
+</details>
+<details>
+  <summary>unused</summary>
+  <ol id="camps"></ol>
+</details>
+
+<script>
+  let camps = [
+    "railgun",
+    "atomic garden",
+    "cannon",
+    "pillbox",
+    "scud launcher",
+    "victory totem",
+    "catapult",
+    "nest of spies",
+    "command post",
+    "obelisk",
+    "mercenary camp",
+    "reactor",
+    "the octagon",
+    "juggernaut",
+    "scavenger camp",
+    "outpost",
+    "transplant lab",
+    "resonator",
+    "bonfire",
+    "cache",
+    "watchtower",
+    "construction yard",
+    "adrenaline lab",
+    "mulcher",
+    "blood bank",
+    "arcade",
+    "training camp",
+    "supply depot",
+    "omen clock",
+    "warehouse",
+    "garage",
+    "oasis",
+    "parachute base",
+    "labor camp",
+  ]
+  let p1Hand = []
+  let p2Hand = []
+
+  for (let i = 0; i < 6; i++) {
+    let p1Selection = camps[camps.length * Math.random() | 0]
+    camps = camps.filter(item => item !== p1Selection)
+    p1Hand.push(p1Selection)
+
+    let p2Selection = camps[camps.length * Math.random() | 0]
+    camps = camps.filter(item => item !== p2Selection)
+    p2Hand.push(p2Selection)
+  }
+
+  p1Hand.forEach(camp => {
+    let card = document.createElement("li")
+    card.appendChild(document.createTextNode(camp));
+    document.getElementById("p1Hand").appendChild(card)
+  });
+
+  p2Hand.forEach(camp => {
+    let card = document.createElement("li")
+    card.appendChild(document.createTextNode(camp));
+    document.getElementById("p2Hand").appendChild(card)
+  });
+
+  camps.forEach(camp => {
+    let card = document.createElement("li")
+    card.appendChild(document.createTextNode(camp));
+    document.getElementById("camps").appendChild(card)
+  });
+
+</script>
+<style>
+  * {
+    font-family: sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-sizing: border-box;
+  }
+  html {
+    background: black;
+  }
+  details {
+    color: white;
+    margin: 8px;
+    border: 2px solid white;
+  }
+  summary {
+    cursor: pointer;
+    padding: 8px;
+    background: hotpink;
+  }
+  li {
+    line-height: 1.6;
+  }
+</style>
